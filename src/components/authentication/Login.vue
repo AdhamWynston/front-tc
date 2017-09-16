@@ -57,7 +57,8 @@
             }
             this.$http.post("http://127.0.0.1:8000/oauth/token", data)
                 .then(response => {
-                    console.log(response)
+                    this.$auth.setToken(response.body.access_token, response.body.expires_in + Date.now())
+                    this.$router.push("/home")
                 })
 //                .then(function (response) {
 //                    console.log(response)
